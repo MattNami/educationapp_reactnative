@@ -12,20 +12,20 @@ const SelectProvinceScreen = () => {
   return (
     <SafeAreaView className="px-7 py-8">
       {/** ============== Header text component =========== */}
-      <HeaderText text={"What's your province?"} />
+      <HeaderText text={"Gobolkaaga waa kuma?"} />
 
-      {/** ============== Select Grades ===================== */}
+      {/** ============== Xulashada Gobolka ===================== */}
       <View className="mt-10">
         <ProvinceSelector />
       </View>
 
-      {/** ========= Action button ================== */}
+      {/** ========= Guddiga falka ================== */}
       <View className="mt-[25%]">
         <Button
-          primaryBtnText={'Next'}
-          onPrimaryBtnPress={() => navigation.navigate('Home')}
-          secondaryBtnText2={'Skip'}
-          onSecondaryBtnPress={() => navigation.navigate('Home')}
+          primaryBtnText={'Bilow'}
+          onPrimaryBtnPress={() => navigation.navigate('MainTabs')}
+          secondaryBtnText2={'Ka bood'}
+          onSecondaryBtnPress={() => navigation.navigate('MainTabs')}
         />
       </View>
     </SafeAreaView>

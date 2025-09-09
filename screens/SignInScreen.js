@@ -4,9 +4,12 @@ import {
   Image,
   TouchableOpacity,
   Pressable,
-  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
+  ScrollView,
+  Platform,
 } from 'react-native';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { images } from '../assets';
@@ -18,34 +21,80 @@ const { signin } = images;
 
 export default function SignInScreen() {
   const navigation = useNavigation();
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [containerHeight, setContainerHeight] = useState('100%');
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+        setContainerHeight(Platform.OS === 'ios' ? '80%' : '90%');
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+        setContainerHeight('100%');
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
   return (
-    <SafeAreaView className="flex-1 bg-bgWhite px-8">
-      <View className="flex-1 flex justify-around my-4">
-        {/** ====================== Image ============================= */}
-        <View className="flex-row justify-center mb-[-15%]">
-          <Image source={signin} style={{ width: 266, height: 266 }} />
-        </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <SafeAreaView className="flex-1 bg-bgWhite px-8">
+        <ScrollView 
+          contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between' }}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View className="items-center">
+            <Image 
+              source={signin} 
+              style={{ 
+                width: 266, 
+                height: 266,
+                marginTop: 20,
+                marginBottom: 20,
+              }} 
+              resizeMode="contain"
+            />
+          </View>
 
-        {/** ====================== Sign In inputs ============================= */}
-        <View className="flex flex-col w-full items-center justify-center mt-3">
-          <Input label={'Email address'} placeholder={'name@example.com'} />
-          <Input
-            label={'Password'}
-            placeholder={'********'}
-            Icon={EyeIcon}
-            last
-          />
-        </View>
+          <View className="w-full mb-8">
+            <Input 
+              label={'Cinwaanka emaylka'} 
+              placeholder={'magac@tusaale.com'}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <Input
+              label={'Furaha sirta ah'}
+              placeholder={'********'}
+              Icon={EyeIcon}
+              secureTextEntry
+              last
+            />
+          </View>
 
-        {/** ====================== Action button ============================= */}
-        <Button
-          primaryBtnText={'Sign In'}
-          onPrimaryBtnPress={() => navigation.navigate('Home')}
-          secondaryBtnText1={"Don't have an account?"}
-          secondaryBtnText2={'Sign Up'}
-          onSecondaryBtnPress={() => navigation.navigate('SignUp')}
-        />
-      </View>
-    </SafeAreaView>
+          {!isKeyboardVisible && (
+            <View className="mb-8">
+              <Button
+                primaryBtnText={'Gali'}
+                onPrimaryBtnPress={() => navigation.navigate('MainTabs')}
+                secondaryBtnText1={"Ma haysatid akoon?"}
+                secondaryBtnText2={'Diiwaan geli'}
+                onSecondaryBtnPress={() => navigation.navigate('SignUp')}
+              />
+            </View>
+          )}
+        </ScrollView>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }

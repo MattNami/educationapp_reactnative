@@ -30,10 +30,10 @@ export default function WelcomeScreen() {
 
         {/** ====================== Action button ============================= */}
         <Button
-          primaryBtnText={'Sign Up'}
+          primaryBtnText={'Diiwaan geli'}
           onPrimaryBtnPress={() => navigation.navigate('SignUp')}
-          secondaryBtnText2={'Skip'}
-          onSecondaryBtnPress={() => navigation.navigate('SignIn')}
+          secondaryBtnText2={'Gali'}
+          onSecondaryBtnPress={() => navigation.navigate('Login')}
         />
       </View>
     </SafeAreaView>

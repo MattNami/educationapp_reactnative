@@ -7,13 +7,13 @@ const SubjectFilter = ({ filters, onSubjectSelect }) => {
 
   const handleSubjectSelect = (subject) => {
     setSelected(subject);
-    onSubjectSelect(subject); // Notify the parent component of a change
+    onSubjectSelect(subject);
   };
 
   return (
     <View className="">
-      <Text className="font-exoSemibold text-darkGrayText text-xs capitalize ">
-        Subject
+      <Text className="font-exoSemibold text-darkGrayText text-xs capitalize">
+        Koorsada
       </Text>
       <View className="flex flex-row flex-wrap mt-3">
         {filters.map((item) => (
