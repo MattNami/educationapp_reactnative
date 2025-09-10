@@ -62,7 +62,7 @@ This project is licensed under the [MIT License](LICENSE).
 If you have any questions or need further assistance, feel free to contact us:
 
 - Your Name: Manuchimso Oliver
-- Email: manuchimoliver779@gmail.com
-- Website: https://www.manuchim.com
+- Email: mattbrydengregorbhai@gmail.com
+
 
 Thank you very much for the project! I enjoyed building it.
