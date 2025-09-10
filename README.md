@@ -61,7 +61,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you have any questions or need further assistance, feel free to contact us:
 
-- Your Name: Manuchimso Oliver
+- Your Name: Iman Abdukadir Abdullahi
 - Email: mattbrydengregorbhai@gmail.com
 
 
