@@ -1,4 +1,4 @@
-export const themeColors = {
+export const themeColors = 
   bg: '#877dfa',
   bgPurple: '#5667FD',
   bgLightGray: '#EDEDED',
