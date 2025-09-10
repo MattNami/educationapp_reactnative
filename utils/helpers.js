@@ -1,5 +1,5 @@
 // function for getting time and returning a greeting based on current time
-export function getLocalGreeting() {
+export function getLocalGreeting() 
   const now = new Date();
   const hours = now.getHours();
 
